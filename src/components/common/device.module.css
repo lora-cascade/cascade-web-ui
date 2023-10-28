@@ -1,0 +1,15 @@
+.device {
+  color: #b3b3b3;
+  display: flex;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.colorBlock {
+  min-width: 0.8rem;
+  min-height: 0.8rem;
+  margin-right: 1rem;
+}

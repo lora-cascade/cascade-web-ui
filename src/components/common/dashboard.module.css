@@ -1,0 +1,38 @@
+.dashboard {
+  width: 100%;
+  background-color: var(--bg-light);
+}
+
+.dashboard h1 {
+  white-space: nowrap;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.header {
+  background-color: var(--bg-header);
+  display: flex;
+  align-items: center;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.menu {
+  margin-left: 2.5rem;
+  cursor: pointer;
+  display: none;
+  flex-shrink: 0;
+}
+
+.noBoard {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 660px) {
+  .menu {
+    display: inline;
+  }
+}

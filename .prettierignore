@@ -1,0 +1,9 @@
+# ignore everything
+/*
+
+# whitelist directories
+!/src
+#!/public
+
+# blacklist filetypes
+# *.js

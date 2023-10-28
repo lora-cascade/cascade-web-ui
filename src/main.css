@@ -1,0 +1,113 @@
+/*
+  Fonts
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*
+  CSS Reset
+*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin, padding, and font */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Set height to 100% on html, body, and root */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/*
+  Vars
+*/
+
+:root {
+  --bg-light: #d9d9d9;
+  --bg-dark: #0f0f21;
+  --bg-header: #ffffff;
+  --primary-light: #000000;
+  --primary-dark: #ffffff;
+  --accent-light: #26265f;
+  --accent-dark: #26265f;
+  --hover-dark: #5f263d;
+}
+
+body.dark {
+  --primary-color: #f2e9e4;
+  --bg-color: #131321;
+}
+
+/*
+  Utility Classes
+*/
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.fs-primary-heading {
+  font-size: 4rem;
+}
+
+.fs-secondary-heading {
+  font-size: 2.4rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-monospace {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.font-sans {
+  font-family: 'Lato', sans-serif;
+}
+
+/*
+  General Styling
+*/
+
+/* Makes 1 rem represent 10 pixels */
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Lato', sans-serif;
+  color: var(--primary-light);
+  background-color: var(--bg-light);
+}
