@@ -2,6 +2,7 @@ import { Menu } from 'react-feather';
 import { Board } from '../../types/common';
 import styles from './dashboard.module.css';
 import Device from './device';
+import Panel from './panel';
 
 interface DashboardProps {
   board: Board | null;
@@ -39,8 +40,10 @@ function Dashboard(props: DashboardProps) {
       </div>
 
       {/* Dashboard */}
+      {props.board ? <Panel /> : null}
     </div>
   );
 }
 
 export default Dashboard;
+
