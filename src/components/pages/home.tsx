@@ -1,9 +1,10 @@
-import Dashboard from '../common/dashboard';
-import Sidebar from '../common/sidebar';
+import Dashboard from '../main/dashboard.tsx';
+import Sidebar from '../main/sidebar.tsx';
 import styles from './home.module.css';
 import { Board } from '../../types/common';
 import { useState } from 'react';
-import AddBoardModal from '../common/addBoardModal';
+import AddBoardModal from '../main/addBoardModal.tsx';
+import NoWebSerial from '../common/noWebSerial.tsx';
 
 function Home() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState<boolean>(false);
@@ -20,16 +21,10 @@ function Home() {
 
   window.addEventListener('resize', handleResize);
 
-  /* const boards: Board[] = [
-    {
-      name: 'board 1',
-      color: '#CFA2DF',
-    },
-    {
-      name: 'board 2',
-      color: '#A2DFB3',
-    },
-  ]; */
+  // Check if the Web Serial API is supported in the current browser
+  if (!('serial' in navigator)) {
+    return <NoWebSerial />;
+  }
 
   return (
     <div className={styles.container}>

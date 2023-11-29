@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/w3c-web-serial':
+    specifier: ^1.0.6
+    version: 1.0.6
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -493,6 +496,10 @@ packages:
   /@types/semver@7.5.3:
     resolution: {integrity: sha512-OxepLK9EuNEIPxWNME+C6WwbRAOOI2o2BaQEGzz5Lu2e4Z5eDnEo+/aVEDMIXywoJitJ7xWd641wrGLZdtwRyw==}
     dev: true
+
+  /@types/w3c-web-serial@1.0.6:
+    resolution: {integrity: sha512-5IlDdQ2C56sCVwc7CUlqT9Axxw+0V/FbWRbErklYIzZ5mKL9s4l7epXHygn+4X7L2nmAPnVvRl55XUVo0760Rg==}
+    dev: false
 
   /@typescript-eslint/eslint-plugin@6.7.4(@typescript-eslint/parser@6.7.4)(eslint@8.50.0)(typescript@5.2.2):
     resolution: {integrity: sha512-DAbgDXwtX+pDkAHwiGhqP3zWUGpW49B7eqmgpPtg+BKJXwdct79ut9+ifqOFPJGClGKSHXn2PTBatCnldJRUoA==}

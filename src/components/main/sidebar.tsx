@@ -1,5 +1,5 @@
-import { Board } from '../../types/common';
-import Device from './device';
+import { Board } from '../../types/common.ts';
+import Device from '../common/device.tsx';
 import styles from './sidebar.module.css';
 import { Plus, X } from 'react-feather';
 
@@ -47,7 +47,9 @@ function Sidebar(props: SidebarProps) {
       </ul>
 
       <div
-        onClick={() => props.setIsAddBoardModalShown(true)}
+        onClick={() => {
+          props.setIsAddBoardModalShown(true);
+        }}
         className={styles.addDevice}
       >
         <Plus color='white' size={24} />

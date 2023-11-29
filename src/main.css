@@ -83,6 +83,10 @@ body.dark {
   font-size: 2.4rem;
 }
 
+.fs-tertiary-heading {
+  font-size: 2rem;
+}
+
 .font-bold {
   font-weight: bold;
 }
