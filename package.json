@@ -12,19 +12,23 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@types/w3c-web-serial": "^1.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
-    "react-router-dom": "^6.16.0"
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.16.0",
+    "react-switch": "^7.0.0",
+    "set-interval-async": "^3.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/w3c-web-serial": "^1.0.6",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "prettier": "3.0.3",

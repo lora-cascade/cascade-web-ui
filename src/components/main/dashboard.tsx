@@ -1,11 +1,15 @@
-import { Menu } from 'react-feather';
-import { Board } from '../../types/common.ts';
-import styles from './dashboard.module.css';
-import Device from '../common/device.tsx';
-import ButtonPanel from '../common/buttonPanel.tsx';
-import { COLOR_BUTTON_GENERAL, COLOR_BUTTON_KILL } from '../../constants.ts';
 import { ComponentType, useState } from 'react';
-import SendKillModal from './sendKillModal.tsx';
+import { Menu } from 'react-feather';
+import { COLOR_BUTTON_GENERAL, COLOR_BUTTON_KILL } from '../../constants.ts';
+import { Board } from '../../types/common.ts';
+import ButtonPanel from '../common/buttonPanel.tsx';
+import Device from '../common/device.tsx';
+import ListenForKillModal from '../interaction/listenForKillModal.tsx';
+import ListNetworkDevicesModal from '../interaction/listNetworkDevicesModal.tsx';
+import PollMessagesModal from '../interaction/pollMessagesModal.tsx';
+import SendKillModal from '../interaction/sendKillModal.tsx';
+import SendMessageModal from '../interaction/sendMessageModal.tsx';
+import styles from './dashboard.module.css';
 
 interface DashboardProps {
   board: Board | null;
@@ -13,8 +17,12 @@ interface DashboardProps {
   setIsSidebarExpanded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const lookup = {
+const modalLookup = {
+  'Send Message': SendMessageModal,
+  'Poll Messages': PollMessagesModal,
+  'List Network Devices': ListNetworkDevicesModal,
   'Send Kill': SendKillModal,
+  'Listen For Kill': ListenForKillModal,
 };
 
 function Dashboard(props: DashboardProps) {
@@ -63,7 +71,8 @@ function Dashboard(props: DashboardProps) {
                 'List Network Devices',
               ]}
               onClick={(button) => {
-                console.log(button);
+                setModal(() => modalLookup[button as keyof typeof modalLookup]);
+                setIsModalShown(true);
               }}
               buttonColor={COLOR_BUTTON_GENERAL}
             />
@@ -72,7 +81,7 @@ function Dashboard(props: DashboardProps) {
               title={'Kill Operations'}
               buttons={['Send Kill', 'Listen For Kill']}
               onClick={(button) => {
-                setModal(() => lookup[button as keyof typeof lookup]);
+                setModal(() => modalLookup[button as keyof typeof modalLookup]);
                 setIsModalShown(true);
               }}
               buttonColor={COLOR_BUTTON_KILL}
@@ -81,7 +90,7 @@ function Dashboard(props: DashboardProps) {
         )}
       </div>
 
-      {props.board && isModalShown && Modal && (
+      {props.board && Modal && isModalShown && (
         <Modal
           board={props.board}
           onClose={() => {

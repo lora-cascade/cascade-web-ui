@@ -1,9 +1,10 @@
-import { X } from 'react-feather';
-import styles from './addBoardModal.module.css';
 import { useEffect, useRef, useState } from 'react';
+import { X } from 'react-feather';
+import toast from 'react-hot-toast';
+import { USB_BAUD_RATE } from '../../constants.ts';
 import { Board } from '../../types/common.ts';
 import { flushOutput, getSerialPort } from '../../utils/webSerial.ts';
-import { USB_BAUD_RATE } from '../../constants.ts';
+import styles from './addBoardModal.module.css';
 
 interface AddBoardModalProps {
   setIsAddBoardModalShown: React.Dispatch<React.SetStateAction<boolean>>;
@@ -65,33 +66,44 @@ function AddBoardModal(props: AddBoardModalProps) {
 
   return (
     <div className={styles.modalOverlay}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          void onSubmit();
-        }}
-      >
-        <div className={styles.addBoardModal}>
-          <span className={styles.modalHeader}>
-            <h2 className='fs-secondary-heading font-monospace'>Add Board</h2>
-            <X
-              onClick={() => props.setIsAddBoardModalShown(false)}
-              size={24}
-              className={styles.close}
-            />
-          </span>
-          <span className={styles.modalInputs}>
+      <div className={styles.addBoardModal}>
+        {/*Header*/}
+        <span className={styles.modalHeader}>
+          <h2 className='fs-secondary-heading font-monospace'>Add Board</h2>
+          <button
+            className={styles.close}
+            onClick={() => props.setIsAddBoardModalShown(false)}
+          >
+            <X size={24} />
+          </button>
+        </span>
+
+        {/*Form*/}
+        <form
+          className={styles.modalInputs}
+          onSubmit={async (e) => {
+            e.preventDefault();
+            if (name.length > 0) {
+              void (await onSubmit());
+            } else {
+              toast.error('Must provide a board name', {
+                id: 'add-board-name-error',
+              });
+            }
+          }}
+        >
+          <div className={styles.textInputLabelContainer}>
+            <div>Name *</div>
             <input
               type='text'
               onChange={(e) => setName(e.target.value)}
-              placeholder='name'
               ref={nameRef}
               className={styles.boardNameInput}
             />
-          </span>
+          </div>
           <button className={styles.submit}>Add</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

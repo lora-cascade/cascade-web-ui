@@ -1,7 +1,7 @@
+import { Plus, X } from 'react-feather';
 import { Board } from '../../types/common.ts';
 import Device from '../common/device.tsx';
 import styles from './sidebar.module.css';
-import { Plus, X } from 'react-feather';
 
 interface SidebarProps {
   boards: Board[];
@@ -31,19 +31,18 @@ function Sidebar(props: SidebarProps) {
       </span>
 
       <ul>
-        {props.boards &&
-          props.boards.map((item, index) => (
-            <li
-              onClick={() => {
-                props.setSelectedBoard(item);
-                props.setIsSidebarExpanded(false);
-              }}
-              key={index}
-              className={styles.device}
-            >
-              <Device name={item.name} color={item.color} />
-            </li>
-          ))}
+        {props.boards?.map((item, index) => (
+          <li
+            onClick={() => {
+              props.setSelectedBoard(item);
+              props.setIsSidebarExpanded(false);
+            }}
+            key={index}
+            className={styles.device}
+          >
+            <Device name={item.name} color={item.color} />
+          </li>
+        ))}
       </ul>
 
       <div

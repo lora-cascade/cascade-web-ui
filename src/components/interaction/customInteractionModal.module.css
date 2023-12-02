@@ -1,0 +1,52 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.textInputLabelContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.sendMessageTextInputs {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.textInput {
+  border: none;
+  outline: none;
+  background-color: var(--accent-dark);
+  color: var(--primary-dark);
+  border-radius: 0.2em;
+  padding: 0.4em;
+}
+
+.sendButton {
+  width: min(10em, 100%);
+  height: 3em;
+  padding: 0.25em;
+  background-color: var(--accent-dark);
+  color: var(--primary-dark);
+  transition: background-color 0.15s;
+  cursor: pointer;
+  border-radius: 0.2em;
+}
+
+.sendButton:hover {
+  background-color: var(--hover-dark);
+}

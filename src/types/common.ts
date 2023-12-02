@@ -3,3 +3,8 @@ export interface Board {
   color: string;
   port: SerialPort;
 }
+
+export interface CustomInteractionModalProps {
+  board: Board;
+  onClose: () => void;
+}

@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import styles from './interactionModal.module.css';
 import { X } from 'react-feather';
+import styles from './interactionModal.module.css';
 
 interface InteractionModalProps {
   title: string;
@@ -20,13 +20,14 @@ function InteractionModal(props: PropsWithChildren<InteractionModalProps>) {
           <h2 className={'fs-secondary-heading font-monospace'}>
             {props.title}
           </h2>
-          <X
+          <button
+            className={closeClasses}
             onClick={() => {
               if (props.canClose) props.onClose();
             }}
-            size={24}
-            className={closeClasses}
-          />
+          >
+            <X size={24} />
+          </button>
         </span>
 
         <div className={styles.logViewer}>

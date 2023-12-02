@@ -12,10 +12,12 @@ const filters: SerialPortFilter[] = [
   },
 ];
 
+/** Request a serial port from user (filtered to only include specified LoRa boards) */
 export async function getSerialPort(): Promise<SerialPort> {
   return await navigator.serial.requestPort({ filters });
 }
 
+/** Send arbitrary bytes to specified serial port */
 export async function sendBytes(port: SerialPort, data: Uint8Array) {
   if (port.writable) {
     const writer = port.writable.getWriter();
@@ -28,6 +30,7 @@ export async function sendBytes(port: SerialPort, data: Uint8Array) {
   }
 }
 
+/** Attempt to flush output of specified serial port */
 export async function flushOutput(port: SerialPort): Promise<void> {
   let timedOut = false;
   while (port.readable && !timedOut) {
@@ -44,16 +47,15 @@ export async function flushOutput(port: SerialPort): Promise<void> {
         !Object.prototype.hasOwnProperty.call(raceResult, 'value')
       ) {
         timedOut = true;
-        reader.cancel();
+        await reader.cancel();
       }
-    } catch (e) {
-      console.error(e);
     } finally {
       reader.releaseLock();
     }
   }
 }
 
+/** Received bytes from specified serial port (times out after USB_POLL_RATE_MS) */
 export async function receiveBytes(port: SerialPort): Promise<Uint8Array> {
   const chunks: Uint8Array[] = [];
 
@@ -83,13 +85,10 @@ export async function receiveBytes(port: SerialPort): Promise<Uint8Array> {
           }
         } else {
           timedOut = true;
-          reader.cancel();
+          await reader.cancel();
           break;
         }
       }
-    } catch (e) {
-      // TODO: figure out what to do if error
-      console.error(e);
     } finally {
       reader.releaseLock();
     }
@@ -108,4 +107,13 @@ export async function receiveBytes(port: SerialPort): Promise<Uint8Array> {
   }
 
   return combinedChunks;
+}
+
+/** Try to close port (useful when 'resetting' a board connection on error) */
+export async function tryClosePort(port: SerialPort): Promise<void> {
+  try {
+    await port.close();
+  } catch {
+    // Do nothing, we are just "trying"
+  }
 }

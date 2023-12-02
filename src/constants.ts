@@ -5,6 +5,7 @@ export const USB_BAUD_RATE = 115200;
 
 /* Polling constants */
 export const USB_POLL_RATE_MS = 20;
+export const KILL_POLL_RATE_MS = 250;
 export const MAX_POLL_RETRIES = 100;
 
 /* Serial constants */
