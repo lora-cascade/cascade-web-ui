@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    image: cascade-web-ui
+    build:
+      context: .
+      target: deploy
+    ports:
+      - '8080:80'
+
+# docker build --tag cascade-web-ui --target deploy .
+# docker run -p 8080:80 cascade-web-ui
