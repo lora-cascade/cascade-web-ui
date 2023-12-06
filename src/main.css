@@ -43,6 +43,19 @@ svg {
   display: block;
 }
 
+/* Reset button defaults */
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+}
+
+/* Remove list styling */
+ul {
+  list-style-type: none;
+}
+
 /*
   Vars
 */
@@ -81,6 +94,10 @@ body.dark {
 
 .fs-secondary-heading {
   font-size: 2.4rem;
+}
+
+.fs-tertiary-heading {
+  font-size: 2rem;
 }
 
 .font-bold {

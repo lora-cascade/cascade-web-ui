@@ -36,6 +36,11 @@
   cursor: pointer;
 }
 
+.device {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .device:hover {
   background-color: var(--accent-dark);
   transition: background-color 0.15s;

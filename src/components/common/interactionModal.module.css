@@ -1,0 +1,51 @@
+.modalOverlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: relative;
+  max-height: 80%;
+  width: min(80%, 40em);
+  color: var(--primary-dark);
+  background-color: var(--bg-dark);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.5em;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logViewer {
+  padding: 0.5rem;
+  overflow-y: auto;
+  height: 18em;
+  width: 100%;
+  background-color: var(--accent-dark);
+  border-radius: 0.2em;
+}
+
+.close {
+  cursor: pointer;
+  color: var(--primary-dark);
+  transition: color 0.25s;
+}
+
+.closeDisabled {
+  cursor: not-allowed;
+  color: var(--accent-dark);
+}

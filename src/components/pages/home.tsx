@@ -1,9 +1,11 @@
-import Dashboard from '../common/dashboard';
-import Sidebar from '../common/sidebar';
-import styles from './home.module.css';
-import { Board } from '../../types/common';
 import { useState } from 'react';
-import AddBoardModal from '../common/addBoardModal';
+import { Toaster } from 'react-hot-toast';
+import { Board } from '../../types/common';
+import NoWebSerial from '../common/noWebSerial.tsx';
+import AddBoardModal from '../main/addBoardModal.tsx';
+import Dashboard from '../main/dashboard.tsx';
+import Sidebar from '../main/sidebar.tsx';
+import styles from './home.module.css';
 
 function Home() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState<boolean>(false);
@@ -20,44 +22,57 @@ function Home() {
 
   window.addEventListener('resize', handleResize);
 
-  /* const boards: Board[] = [
-    {
-      name: 'board 1',
-      color: '#CFA2DF',
-    },
-    {
-      name: 'board 2',
-      color: '#A2DFB3',
-    },
-  ]; */
+  // Check if the Web Serial API is supported in the current browser
+  if (!('serial' in navigator)) {
+    return <NoWebSerial />;
+  }
 
   return (
-    <div className={styles.container}>
-      <Sidebar
-        isSidebarExpanded={isSidebarExpanded}
-        setIsSidebarExpanded={setIsSidebarExpanded}
-        selectedBoard={selectedBoard}
-        setSelectedBoard={setSelectedBoard}
-        boards={boards}
-        setBoards={setBoards}
-        setIsAddBoardModalShown={setIsAddBoardModalShown}
+    <>
+      <Toaster
+        position={'top-right'}
+        containerStyle={{ zIndex: 1000 }}
+        toastOptions={{
+          error: {
+            style: {
+              background: '#0f0f21',
+              color: '#ffffff',
+            },
+            iconTheme: {
+              primary: '#5f263d',
+              secondary: '#ffffff',
+            },
+          },
+        }}
       />
 
-      {!isSidebarExpanded && (
-        <Dashboard
-          board={selectedBoard}
+      <div className={styles.container}>
+        <Sidebar
           isSidebarExpanded={isSidebarExpanded}
           setIsSidebarExpanded={setIsSidebarExpanded}
-        />
-      )}
-
-      {isAddBoardModalShown && (
-        <AddBoardModal
-          setIsAddBoardModalShown={setIsAddBoardModalShown}
+          selectedBoard={selectedBoard}
+          setSelectedBoard={setSelectedBoard}
+          boards={boards}
           setBoards={setBoards}
+          setIsAddBoardModalShown={setIsAddBoardModalShown}
         />
-      )}
-    </div>
+
+        {!isSidebarExpanded && (
+          <Dashboard
+            board={selectedBoard}
+            isSidebarExpanded={isSidebarExpanded}
+            setIsSidebarExpanded={setIsSidebarExpanded}
+          />
+        )}
+
+        {isAddBoardModalShown && (
+          <AddBoardModal
+            setIsAddBoardModalShown={setIsAddBoardModalShown}
+            setBoards={setBoards}
+          />
+        )}
+      </div>
+    </>
   );
 }
 

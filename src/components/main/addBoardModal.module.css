@@ -1,6 +1,6 @@
 .modalOverlay {
   position: fixed;
-  z-index: 9999;
+  z-index: 999;
   top: 0;
   bottom: 0;
   left: 0;
@@ -13,6 +13,7 @@
 
 .addBoardModal {
   position: relative;
+  width: min(80%, 16em);
   color: var(--primary-dark);
   background-color: var(--bg-dark);
   padding: 2rem;
@@ -30,15 +31,22 @@
 
 .modalInputs {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
+}
+
+.textInputLabelContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .boardNameInput {
+  width: 100%;
   appearance: none;
   border: none;
   outline: none;
-  flex-grow: 1;
   background: var(--accent-dark);
   color: var(--primary-dark);
   border-radius: 0.2em;
@@ -46,19 +54,19 @@
 }
 
 .submit {
-  appearance: none;
-  border: none;
-  outline: none;
-  flex-grow: 1;
+  width: 100%;
+  height: 2em;
+  padding: 0.25em;
   background-color: var(--accent-dark);
   color: var(--primary-dark);
-  border-radius: 0.2em;
-  cursor: pointer;
   transition: background-color 0.15s;
+  cursor: pointer;
+  border-radius: 0.2em;
 }
 
 .close {
   cursor: pointer;
+  color: var(--primary-dark);
 }
 
 .submit:hover {

@@ -3,6 +3,7 @@
 
 # whitelist directories
 !/src
+!/.eslintrc.cjs
 #!/public
 
 # blacklist filetypes
